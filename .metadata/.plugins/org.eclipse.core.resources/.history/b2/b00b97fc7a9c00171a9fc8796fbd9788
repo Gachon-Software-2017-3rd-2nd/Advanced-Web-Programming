@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<newspaper xmlns="http://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.example.org/tvschedule newspaper.xsd">
+<article author="YYS">
+	<headline>Hello</headline>
+	<editor>yys</editor>
+	<date>2017.09.15</date>
+	<edition>3th</edition>
+</article>
+
+<article author="YYJ">
+	<headline>Goodbye</headline>
+	<editor>yyj</editor>
+	<date>2017.09.17</date>
+	<edition>1th</edition>
+</article>
+
+<article author="YAY">
+	<headline>Well well well</headline>
+	<editor>abc</editor>
+	<date>2017.09.18</date>
+	<edition>7th</edition>
+</article>
+</newspaper>

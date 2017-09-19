@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<newspaper xmlns="http://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="newspaper.xsd">
+
+<article author="YYS" editor="yys" date="2017.09.15" edition="3rd">
+	<headline>Hello</headline>
+	<byline>abc</byline>
+	<lead>def</lead>
+	<body>asdf</body>
+	<notes>qqqwwweee</notes>
+</article>
+
+<article author="YYJ" edition="7th">
+	<headline>Goodbye</headline>
+	<byline>qwe</byline>
+	<lead>ggd</lead>
+	<body>hellO</body>
+	<notes>well done</notes>
+</article>
+
+<article author="YAY">
+	<headline>Well well well</headline>
+	<byline>what</byline>
+	<lead>are</lead>
+	<body>you</body>
+	<notes>doing!</notes>
+</article>
+</newspaper>

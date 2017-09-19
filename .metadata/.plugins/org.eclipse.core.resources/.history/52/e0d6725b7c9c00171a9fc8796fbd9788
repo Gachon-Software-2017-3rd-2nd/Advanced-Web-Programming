@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT shiporder (orderperson, shipto, item*)>
+<!ELEMENT shipto (name, address, city, country)>
+<!ELEMENT item (title, note*, quantity, price)>
+
+<!ELEMENT orderperson (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT note (#PCDATA)>
+<!ELEMENT quantity (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+
+<!ATTLIST shiporder orderid CDATA #IMPLIED>
+<!ATTLIST shiporder orderid CDATA #REQUIRED>
+
+<!ATTLIST ARTICLE AUTHOR CDATA #REQUIRED> 

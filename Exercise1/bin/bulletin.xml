@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bulletin SYSTEM "./bulletin.dtd">
+<bulletin>
+	<board>
+		<name>my board</name>
+		<article>
+			<title>유지민이 바보</title>
+			<message>유지민은 바보일까?</message>
+			<writerID>DevFallingstar</writerID>
+			<writerName>다슬기 총각</writerName>
+			<reply>
+				<message>너 뭐냐ㅡㅡ</message>
+				<writerID>ujeemin</writerID>
+				<writerName>유지마니</writerName>
+			</reply>
+		</article>
+	</board>
+</bulletin>

@@ -1,0 +1,10 @@
+<!ELEMENT bulletin (board*)>
+<!ELEMENT board (name, article+)>
+<!ELEMENT article (title, message, writerID, writerName, reply*)>
+<!ELEMENT reply (message, writerID, writerName)>
+
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT writerID (#PCDATA)>
+<!ELEMENT writerName (#PCDATA)>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.example.org/tvschedule2" 
+xmlns:tns="http://www.example.org/tvschedule2" 
+elementFormDefault="qualified">
+
+
+<xs:element name="tvschedule">
+	<xs:complexType>
+	<xs:attribute name="name" type="xs:string" />
+		<xs:all>
+		<xs:element name="channel">
+			<xs:complexType>
+				<xs:all>
+					<xs:element name="banner" type="xs:string"/>
+					<!-- banner end  -->
+					
+					<xs:element name="day">
+					<xs:complexType>
+						<xs:all>
+						<xs:element name="date" type="xs:string"/>
+						<xs:element name="slot">
+							<xs:complexType>
+								<xs:choice>
+									<xs:element name="holiday" type="xs:string"/>
+									<xs:element name="programslot">
+									<xs:complexType>
+									<xs:all>
+									<xs:element name="time" type="xs:string"/>
+									<xs:element name="title">
+									<xs:complexType>
+									<xs:attribute name="ratig" type="xs:string"/>
+									<xs:attribute name="language" type="xs:string"/>
+									</xs:complexType>
+									</xs:element>
+									<xs:element name="description" type="xs:string" minOccurs="0"/>
+									</xs:all>
+									<xs:attribute name="vtr" type="xs:string"/>
+									</xs:complexType>
+									</xs:element>
+								</xs:choice>
+							</xs:complexType>
+						</xs:element>
+						</xs:all>
+					</xs:complexType>
+					</xs:element>
+					<!-- day end  -->	
+				</xs:all>
+				<xs:attribute name="chan" type="xs:string" use="required" />
+			</xs:complexType>
+			<!-- channel end  -->
+		</xs:element>
+		</xs:all>
+		<xs:attribute name="name" type="xs:string" use="required" />
+	</xs:complexType>
+</xs:element>
+
+
+
+</xs:schema>
