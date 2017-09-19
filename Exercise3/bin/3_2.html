@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Exercise3_2</title>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="500"
+style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+<script>
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+var grd = ctx.createRadialGradient(100,100,0,50,50,100);
+grd.addColorStop(0, "red");
+grd.addColorStop(1, "white");
+
+ctx.beginPath();
+ctx.ellipse(100, 100, 50, 70, 0*Math.PI/180, 0, 2*Math.PI);
+ctx.stroke();
+ctx.fillStyle = grd;
+ctx.fill();
+
+</script>
+</body>
+</html>

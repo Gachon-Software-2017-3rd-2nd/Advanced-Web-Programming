@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	function clickCounter() {
+		if (typeof(Storage) !== "undefined") {
+			if (window.sessionStorage.getItem('clickcount')) {
+				var cnt = Number(window.sessionStorage.getItem('clickcount')) + 1;
+
+				window.sessionStorage.setItem('clickcount', cnt+"")
+			} else {
+				window.sessionStorage.setItem('clickcount', "0")
+			}
+			var currentCnt = Number(window.sessionStorage.getItem('clickcount'))
+			document.getElementById("result").innerHTML = "You have clicked the button " + currentCnt + "time(s).";
+		} else{
+			document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage ...";
+		}
+	}
+</script>
+</head>
+<body>
+<p><button type="button" onclick="clickCounter()">Counter</button></p>
+<div id="result"></div>
+<p>Click the button to see the counter increase.</p>
+<p>Close the browser tab (or window), and try again,
+and the counter will continue to count (is not reset).</p>
+</body>
+</html>
