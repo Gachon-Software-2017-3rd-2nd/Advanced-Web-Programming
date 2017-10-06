@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#btnFirst").click(function(){
+		$("#first").css("color", $("#fColor").val());
+		});
+
+	
+	$("#btnSecond").click(function(){
+		$("#second").css("color", $("#fColor").val());
+		});
+
+	
+	$("#btnThird").click(function(){
+		$("#third").css("color", $("#fColor").val());
+		});
+	});
+</script>
+</head>
+
+<body>
+	<h1 id="first">Header 1</h1>
+	<h1 id="second">Header 2</h1>
+	<h1 id="third">Header 3</h1>
+
+	Choose the header color : <input type="color" id="fColor" value="#FF0000"><br/>
+	<button id="btnFirst">Change 1</button>
+	<button id="btnSecond">Change 2</button>
+	<button id="btnThird">Change 3</button>
+</body>
+
+</html>

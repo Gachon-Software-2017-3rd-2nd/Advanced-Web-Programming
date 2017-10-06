@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+	var choiceStr = "Your choice: ";
+	var defaultStr = "Which is the browser you prefer?";
+
+	$(document).ready(function(){
+		$("button").click(function(){
+			$("p").toggle();
+		});
+		$("#chromeP").mouseenter(function(){
+			$("#QTxt").text(choiceStr+"Chome");
+		});
+		$("#IEP").hover(function(){
+			$("#QTxt").text(choiceStr+"Internet Explorer");
+		});
+		$("#SafariP").hover(function(){
+			$("#QTxt").text(choiceStr+"Safari");
+		});
+		$("p").mouseleave(function(){
+			$("#QTxt").text(defaultStr);
+		});
+	});
+
+	</script>
+</head>
+<body>
+	<h2 id="QTxt">Which is the browser you prefer?</h2>
+	<p id="chromeP">(a) Chrome</p>
+	<p id="IEP">(b) Internet Explorer</p>
+	<p id="SafariP">(c) Safari</p>
+	</body>
+</html>

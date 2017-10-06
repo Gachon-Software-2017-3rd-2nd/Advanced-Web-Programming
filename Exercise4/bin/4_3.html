@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+	$(document).ready(function(){
+		
+		$("img").click(function(){
+			var iconName = $(this).attr('id')
+			$("#favTxt").text("My favorite icon : "+iconName);
+		});
+		
+		$("img").mouseenter(function(){
+			$(this).animate({
+				height:'+=50px',
+				width:'+=50px'});
+		});
+
+		$("img").mouseleave(function(){
+			$(this).animate({
+				height:'150px',
+				width:'150px'});
+		});
+
+	});
+</script>
+</head>
+
+<body>
+	<p id="favTxt">My favorite icon is...</p>
+	<br/><br/><br/><br/>
+	<img id="Apple" src="./icons/apple.png" height="150", width="150">
+	<img id="Firefox" src="./icons/firefox.png" height="150", width="150">
+	<img id="Internet Explorer" src="./icons/IE.png" height="150", width="150">
+	<img id="Opera" src="./icons/opera.png" height="150", width="150">
+	<img id="Safari" src="./icons/safari.png" height="150", width="150">
+	<img id="Vivaldi" src="./icons/vivaldi.png" height="150", width="150">
+</body>
+
+</html>

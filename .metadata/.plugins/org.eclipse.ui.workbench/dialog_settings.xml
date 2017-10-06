@@ -13,8 +13,10 @@
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.wst.xsd.ui.internal.wizards.NewXSDWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.ui.wizards.new.file" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.ui.Basic"/>
+			<item value="org.springframework.ide.eclipse.beans.ui.wizards.category"/>
 			<item value="org.eclipse.wst.XMLCategory"/>
 			<item value="org.eclipse.ui.Examples"/>
 		</list>

@@ -2,32 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="xs:sequence" key="selection"/>
+		<item value="ctx" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Ctx"/>
+			<item value="ctx"/>
+			<item value="this"/>
+			<item value="sessionStorage"/>
 			<item value="xs:all"/>
 			<item value="element"/>
 			<item value="title"/>
 			<item value="name"/>
 		</list>
 		<list key="replacehistory">
+			<item value="curCtx"/>
+			<item value="ctx"/>
+			<item value="window.sessionStorage"/>
 			<item value="xs:sequence"/>
 			<item value="reply"/>
 			<item value="writerName"/>
 			<item value="writerID"/>
 			<item value="message"/>
-			<item value="title"/>
-			<item value="article"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="265" key="DIALOG_WIDTH"/>
 		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText" key="DIALOG_FONT_NAME"/>
 		<item value="399" key="DIALOG_HEIGHT"/>
-		<item value="1157" key="DIALOG_X_ORIGIN"/>
+		<item value="578" key="DIALOG_X_ORIGIN"/>
 		<item value="122" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
