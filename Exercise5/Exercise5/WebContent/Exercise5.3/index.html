@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX Example</title>
+<script>
+function loadXMLDoc()
+{
+	var html="";
+	var each_idx;
+	var select_idx = document.getElementById("data_type").selectedIndex;
+	var select_opts = document.getElementById("data_type").options;
+	var select_type = select_opts[select_idx].text;
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var json_data = JSON.parse(xmlhttp.responseText);
+			html += "<table border=\"1\">";
+			html += "<tr><th bgcolor=\"#808080\">"+select_type+"</th></tr>"
+			
+			for (each_idx in json_data.CATALOG.CD) {
+				switch(select_type) {
+				case "TITLE":
+					html += "<tr><td>" + json_data.CATALOG.CD[each_idx].TITLE + "</td></tr>";
+					break;
+				case "ARTIST":
+					html += "<tr><td>" + json_data.CATALOG.CD[each_idx].ARTIST + "</td></tr>";
+					break;
+				case "COUNTRY":
+					html += "<tr><td>" + json_data.CATALOG.CD[each_idx].COUNTRY + "</td></tr>";
+					break;
+				case "COMPANY":
+					html += "<tr><td>" + json_data.CATALOG.CD[each_idx].COMPANY + "</td></tr>";
+					break;
+				case "PRICE":
+					html += "<tr><td>" + json_data.CATALOG.CD[each_idx].PRICE + "</td></tr>";
+					break;
+				case "YEAR":
+					html += "<tr><td>" + json_data.CATALOG.CD[each_idx].YEAR + "</td></tr>";
+					break;
+				default:
+					break;
+				}
+			}
+			html += "</table>";
+			document.getElementById("div2").innerHTML = html;
+		}
+	}
+	
+	xmlhttp.open("GET", "cd_catalog.json", false);
+	xmlhttp.send();
+	
+}
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Select a Field to Show:</h2></div>
+<select id="data_type">
+	<option>TITLE</option>
+	<option>ARTIST</option>
+	<option>COUNTRY</option>
+	<option>COMPANY</option>
+	<option>PRICE</option>
+	<option>YEAR</option>
+</select>
+<button type="button" onclick="loadXMLDoc()">Show Values</button><br/>
+<div id="div2">
+</div>
+</body>
+</html>
+ 

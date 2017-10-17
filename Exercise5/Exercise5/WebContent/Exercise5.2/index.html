@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX Example</title>
+<script>
+function loadXMLDoc()
+{
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+			parseXml(this);
+		}
+	}
+	xmlhttp.open("GET", "cd_catalog.xml", true);
+	xmlhttp.send();
+}
+function parseXml(xml){
+	var xmlDoc = xml.responseXML;
+	var html = "";
+	var cds = xmlDoc.getElementsByTagName("CD");
+	var arr = xmlDoc.getElementsByTagName("ARTIST");
+	var artist_search = document.getElementById("artist_name").value;
+	
+	for (var i = 0; i < cds.length; i++){
+		var cd_artist = cds[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+		
+		if (cd_artist == artist_search){
+			var cd = cds[i];
+			var cd_title = cds[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+			var cd_country = cds[i].getElementsByTagName("COUNTRY")[0].childNodes[0].nodeValue;
+			var cd_company = cds[i].getElementsByTagName("COMPANY")[0].childNodes[0].nodeValue;
+			var cd_price = cds[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue;
+			var cd_year = cds[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue;
+			
+			html = "CD Information:<br/>";
+			
+			html += "<table border=\"1\">\n";
+			html += "<tr>\n";
+			html += "<th>TITLE</th>\n";
+			html += "<td>" + cd_title + "</td>\n";
+			html += "</tr>\n";
+			html += "<tr>\n";
+			html += "<th>ARTIST</th>\n";
+			html += "<td>" + cd_artist + "</td>\n";
+			html += "</tr>\n";
+			html += "<tr>\n";
+			html += "<th>COUNTRY</th>\n";
+			html += "<td>" + cd_country + "</td>\n";
+			html += "</tr>\n";
+			html += "<tr>\n";
+			html += "<th>COMPANY</th>\n";
+			html += "<td>" + cd_company + "</td>\n";
+			html += "</tr>\n";
+			html += "<tr>\n";
+			html += "<th>PRICE</th>\n";
+			html += "<td>" + cd_price + "</td>\n";
+			html += "</tr>\n";
+			html += "<tr>\n";
+			html += "<th>YEAR</th>\n";
+			html += "<td>" + cd_year + "</td>\n";
+			html += "</tr>\n";
+			html += "</table>\n";
+			break;
+		}else{
+			html = "CD Information: none<br/>";
+			continue;
+		}
+	}
+	document.getElementById("div2").innerHTML = html;
+}
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Enter Artist Name:</h2></div>
+<input type="text" id="artist_name">
+<button type="button" onclick="loadXMLDoc()">Search</button><br/>
+
+<div id="div2">
+CD Information:<br/>
+</div>
+</body>
+</html>
+ 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX Example</title>
+<script>
+function loadXMLDoc()
+{
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function()
+    {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+        document.getElementById("div1").innerHTML=xmlhttp.responseText;
+      }
+    }
+ 
+    xmlhttp.open("GET","ajax_info.txt",true);
+    xmlhttp.send();
+}
+</script>
+</head>
+<body>
+<div id="div1"><h2>Let AJAX change this text</h2></div>
+<button type="button" onclick="loadXMLDoc()">Change Content</button>
+</body>
+</html>
+ 
