@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="EUC-KR">
+    <title>AJAX Example</title>
+    <script>
+        function first() {
+            var xmlDoc = loadXMLDoc("books.xml");
+            var root = xmlDoc.documentElement;
+            var tmp = root.getElementsByTagName("book");
+            var first = mkTable1(tmp);
+        }
+
+        function seconds() {
+            var xmlDoc = loadXMLDoc("cd_catalog.xml");
+            var root = xmlDoc.documentElement;
+            var tmp = root.getElementsByTagName("CD");
+            var first = mkTable2(tmp);
+        }
+
+        function loadXMLDoc(filename) {
+            xhttp = new XMLHttpRequest();
+            xhttp.open("GET", filename, false);
+            xhttp.send();
+            return xhttp.responseXML;
+        }
+
+        function extendLastChild(node) {
+            var i = node.childNodes.length - 1;
+            while (node.childNodes[i].nodeType == 3
+              && node.childNodes[i].nodeValue.trim().length == 0)
+                i--;
+            return node.childNodes[i];
+        }
+
+        function mkTable1(node) {
+            var html = '<table border="1" cellpadding="3">\n';
+            for (var i = 0; i < node.length; i++) {
+                html += '<tr><th>' + node[i].nodeName + '</th>';
+                html += '<th>' + node[i].childNodes[2].nodeValue + '</th></tr>\n';
+                for (var j = 0; j < node[i].childNodes.length; j++) {
+                    if (node[i].childNodes[j].nodeType == 1) {
+                        html += '<tr><td>' + node[i].childNodes[j].nodeName + '</td>';
+                        html += '<td>' + node[i].childNodes[j].childNodes[0].nodeValue + '</td><tr>\n';
+                    }
+                }
+            }
+            html += '</table><br><br><br>\n';
+            document.write(html);
+        }
+
+        function mkTable2(node) {
+            var html = '<table border="1" cellpadding="3">\n';
+            for (var i = 0; i < node.length; i++) {
+                var tmp = extendLastChild(node[i]);
+                if (tmp.childNodes[0].nodeValue < 1990)
+                    continue;
+                html += '<tr><th>' + node[i].nodeName + '</th>';
+                html += '<th>' + node[i].childNodes[2].nodeValue + '</th></tr>\n';
+                for (var j = 0; j < node[i].childNodes.length; j++) {
+                    if (node[i].childNodes[j].nodeType == 1) {
+                        html += '<tr><td>' + node[i].childNodes[j].nodeName + '</td>';
+                        html += '<td>' + node[i].childNodes[j].childNodes[0].nodeValue + '</td><tr>\n';
+                    }
+                }
+            }
+            html += '</table>\n';
+            document.write(html);
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        first();
+        seconds();
+    </script>
+</body>
+
+</html>

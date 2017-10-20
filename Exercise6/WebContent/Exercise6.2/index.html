@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Example</title>
+    <script>
+        function main_books() {
+            var xmlDoc = loadXMLDoc("books.xml");
+            var rootElement = xmlDoc.documentElement;
+            var tmpElement = rootElement.getElementsByTagName("book");
+            var table_xml = makeTableForBooks(tmpElement);
+        }
+
+        function main_catalog() {
+            var xmlDoc = loadXMLDoc("cd_catalog.xml");
+            var rootElement = xmlDoc.documentElement;
+            var tmpElement = rootElement.getElementsByTagName("CD");
+            var table_catalog = makeTableForCatalog(tmpElement);
+        }
+
+        function loadXMLDoc(filename) {
+            xhttp = new XMLHttpRequest();
+            xhttp.open("GET", filename, false);
+            xhttp.send();
+            
+            return xhttp.responseXML;
+        }
+
+        function getLastChild(node) {
+            var i = node.childNodes.length - 1;
+            
+            while (node.childNodes[i].nodeType == 3 && node.childNodes[i].nodeValue.trim().length == 0) {
+            		i--;
+            }
+                
+            return node.childNodes[i];
+        }
+
+        function makeTableForBooks(node) {
+        		var i = 0, j = 0;
+            var html = '<table border="1" cellpadding="3">\n';
+            
+            for (i = 0; i < node.length; i++) {
+            	
+                html += '<tr><th>' + node[i].nodeName + '</th>';
+                html += '<th>' + node[i].childNodes[2].nodeValue + '</th></tr>\n';
+                
+                for (j = 0; j < node[i].childNodes.length; j++) {
+                    if (node[i].childNodes[j].nodeType == 1) {
+                        html += '<tr><td>' + node[i].childNodes[j].nodeName + '</td>';
+                        html += '<td>' + node[i].childNodes[j].childNodes[0].nodeValue + '</td><tr>\n';
+                    }
+                }
+            }
+            
+            html += '</table><br><br><br>\n';
+            
+            document.write(html);
+        }
+
+        function makeTableForCatalog(node) {
+        		var i,j = 0    
+        		var html = '<table border="1" cellpadding="3">\n';
+            
+            for (i = 0; i < node.length; i++) {
+                var tmpNode = getLastChild(node[i]);
+                
+                if (tmpNode.childNodes[0].nodeValue <= 1989){
+                		continue;
+                }
+                    
+                html += '<tr><th>' + node[i].nodeName + '</th>';
+                html += '<th>' + node[i].childNodes[2].nodeValue + '</th></tr>\n';
+                
+                for (j = 0; j < node[i].childNodes.length; j++) {
+                    if (node[i].childNodes[j].nodeType == 1) {
+                        html += '<tr><td>' + node[i].childNodes[j].nodeName + '</td>';
+                        html += '<td>' + node[i].childNodes[j].childNodes[0].nodeValue + '</td><tr>\n';
+                    }
+                }
+            }
+            
+            html += '</table>\n';
+            
+            document.write(html);
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+    main_books();
+    main_catalog();
+    </script>
+</body>
+
+</html>

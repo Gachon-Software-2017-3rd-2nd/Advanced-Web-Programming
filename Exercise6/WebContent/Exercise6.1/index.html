@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Exercise6.1</title>
+<script>
+	var currentNode = null;
+	// var monitor = document.getElementById("monitor");
+	var html = "";
+	loadBooksXML();
+
+	function printMonitor(text) {
+		html = "<br/>";
+		html += text;
+		html += "<br/><br/>";
+		document.getElementById("monitor").innerHTML = html;
+	}
+
+	function loadXMLDoc(filename) {
+		xhttp = new XMLHttpRequest();
+		xhttp.open("GET", filename, false);
+		xhttp.send();
+		return xhttp.responseXML;
+	}
+
+	function loadBooksXML() {
+		var xmlDoc = loadXMLDoc("books.xml");
+		var x = xmlDoc.getElementsByTagName("book")[0];
+
+		currentNode = x;
+
+		alert("books.xml loaded!");
+	}
+
+	function alertAllElements() {
+		var childElements = currentNode.childNodes;
+		for (i = 0; i < childElements.length; i++) {
+			if (childElements[i].nodeType == 1) {
+				alert(childElements[i].firstChild.nodeValue);
+			}
+		}
+	}
+	
+	/*  Functions for silbings START  */
+	function getNextSibling(node) {
+		var tmp = node.nextSibling;
+		
+        while (tmp.nodeType != 1) {
+            tmp = tmp.nextSibling;
+        }
+        
+		return tmp;
+	}
+	function getPrevSibling(node) {
+		var tmp = node.previousSibling;
+
+        while (tmp.nodeType != 1) {
+            tmp = tmp.previousSibling;
+        }
+        
+		return tmp;
+	}
+	function printNextSiblingOfCurrentElement() {
+		//alert(currentNode.childNodes[1].firstChild.nodeValue);
+		var nextNode = getNextSibling(currentNode.childNodes[1]);
+		printMonitor(nextNode.firstChild.nodeValue);
+	}
+	function printPrevSiblingOfCurrentElement() {
+		var nextNode = getPrevSibling(currentNode.childNodes[1]);
+		printMonitor(nextNode.firstChild.nodeValue);
+	}
+	/*  Functions for silbings END  */
+
+	
+	/*  Functions for child nodes START  */
+	function getFirstChildNode(node) {
+		var childElements = node.childNodes;
+		var resultValue = null;
+
+		for (i = 0; i < childElements.length; i++) {
+			if (childElements[i].nodeType == 1) {
+				resultValue = childElements[i].firstChild;
+				break;
+			}
+		}
+
+		return resultValue;
+	}
+	function getLastChildNode(node) {
+		var childElements = node.childNodes;
+		var resultValue = null;
+
+		for (i = childElements.length - 1; i >= 0; i--) {
+			if (childElements[i].nodeType == 1) {
+				resultValue = childElements[i].firstChild;
+				break;
+			}
+		}
+
+		return resultValue;
+	}
+	function printFirstElementOfCurrentNode() {
+		var resultNode = getFirstChildNode(currentNode);
+
+		printMonitor(resultNode.nodeValue.trim());
+	}
+	function printLastElementOfCurrentNode() {
+		var resultNode = getLastChildNode(currentNode);
+		
+		printMonitor(resultNode.nodeValue.trim());
+	}
+	/*  Functions for child nodes END  */
+	
+	function childNodes(node) {
+            var nodes = [], i = 0;
+            var tmp = getFirstChildNode(node);
+            nodes[i] = tmp;
+            while (tmp != null) {
+                tmp = getNextSibling(tmp);
+                if (tmp != null)
+                  nodes[++i] = tmp;
+            }
+            return nodes;
+    }
+</script>
+</head>
+<body>
+	<div id="div1"><h1>Hello WannaBe</h1></div>
+	
+	Data : 
+	<button type="button" onclick="loadBooksXML()">Loads Books.xml</button>
+	<br/><br/>
+	
+	Child nodes : 
+	<button type="button" onclick="printFirstElementOfCurrentNode()">Print
+		first child node</button>
+	<button type="button" onclick="printLastElementOfCurrentNode()">Print
+		last child node</button>
+	<br/><br/>
+	
+	Sibling nodes :
+	<button type="button" onclick="printNextSiblingOfCurrentElement()">Print
+		next sibling node</button>
+	<button type="button" onclick="printPrevSiblingOfCurrentElement()">Print
+		prev sibling node</button>
+	<br/><br/>
+	
+	Monitor
+	<div id="monitor" style="border: 1px solid black;">
+		<br /> <br />
+	</div>
+</body>
+</html>

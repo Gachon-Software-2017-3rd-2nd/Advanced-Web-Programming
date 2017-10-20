@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Example</title>
+    <script>
+        function loadXMLDoc(filename) {
+            xhttp = new XMLHttpRequest();
+            xhttp.open("GET", filename, false);
+            xhttp.send();
+            return xhttp.responseXML;
+        }
+
+        function main_books() {
+        		var i = 0, j = 0, k = 0;
+            var xmlDoc = loadXMLDoc("books.xml");
+            var root = xmlDoc.getElementsByTagName("bookstore");
+
+            var arr_titleName = ["First", "Second", "Third"];
+            var arr_authorName = ["Hong", "Gi", "Wook"];
+            var arr_yearName = ["1993", "04", "12"];
+            var arr_bookAttrName = ["Web", "Programming", "HW"];
+            var arr_search = ["title", "author", "year"];
+
+            for (i = 0; i < arr_search.length; i++) {
+                var element_book = xmlDoc.createElement("book");
+                var element_title = xmlDoc.createElement("title");
+                var element_author = xmlDoc.createElement("author");
+                var element_year = xmlDoc.createElement("year");
+                var element_bookAttr = xmlDoc.createAttribute("category");
+                var element_titleAttr = xmlDoc.createAttribute("lang");
+                
+                element_titleAttr.nodeValue = "en";
+                
+                element_bookAttr.nodeValue = arr_bookAttrName[i];
+                element_book.setAttributeNode(element_bookAttr);
+
+                element_title.setAttributeNode(element_titleAttr);
+
+                element_title.appendChild(xmlDoc.createTextNode(arr_titleName[i]));
+                element_book.appendChild(element_title);
+
+                element_author.appendChild(xmlDoc.createTextNode(arr_authorName[i]));
+                element_book.appendChild(element_author);
+
+                element_year.appendChild(xmlDoc.createTextNode(arr_yearName[i]));
+                element_book.appendChild(element_year);
+                
+                root[0].appendChild(element_book);
+            }
+
+            html = '<table border="1">\n';
+            var element_node = xmlDoc.getElementsByTagName("book");
+
+            for (i = 0; i < element_node.length; i++)
+                if (element_node[i].nodeType == 1) {
+                    var value = element_node[i].childNodes;
+                    for (j = 0; j < value.length; j++) {
+                    	if (value[j].nodeType == 1){
+                    		for (k = 0; k < 3; k++){
+                    			if (value[j].nodeName == arr_search[k]){
+                    				html += "<tr><td>" + value[j].nodeName + "</td><td>" + value[j].childNodes[0].nodeValue + "</td></tr>";
+                    			}    
+                    		}
+                    	}
+                    }
+                }
+            html += "</table><br><br><br>";
+            document.write(html);
+        }
+
+        function main_catalog() {
+        		var i = 0, j = 0, k = 0;
+            var xmlDoc = loadXMLDoc("cd_catalog.xml");
+            var root = xmlDoc.getElementsByTagName("CD");
+            var arr_search = ["TITLE", "ARTIST", "PRICE", "YEAR"];
+
+            html = '<table border="1">\n';
+            
+            for (i = 0; i < root.length; i++) {
+            	
+                if (root[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue < 1995) {
+                    var discount = root[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue * 0.9;
+                    var changeNode = root[i].getElementsByTagName("PRICE")[0].childNodes[0];
+                    changeNode.nodeValue = discount;
+                    var value = root[i].childNodes;
+
+                    for (j = 0; j < value.length; j++){
+                    	if (value[j].nodeType == 1){
+                    		for (k = 0; k < arr_search.length; k++){
+                    			if (value[j].nodeName == arr_search[k]){
+                    				html += "<tr><td>" + value[j].nodeName + "</td><td>" + value[j].childNodes[0].nodeValue + "</td></tr>";
+                    			}
+                    		}
+                    	}
+                    }
+                }
+            }
+            html += "</table>";
+            document.write(html);
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+    main_books();
+    main_catalog();
+    </script>
+</body>
+
+</html>
