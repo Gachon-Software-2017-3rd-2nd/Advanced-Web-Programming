@@ -30,8 +30,8 @@ public class Exercise extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out = response.getWriter();
-		out.println("<html>Hello World</html>");
+		// PrintWriter out = response.getWriter();
+		// out.println("<html>Hello World</html>");
 	}
 
 	/**
