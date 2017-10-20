@@ -21,3 +21,12 @@ Exercise 5
 5-1 : Create a web page with AJAX and tomcat that change the contents of div element with button function  
 5-2 : Create a web page that loads the music information by artist name  
 5-3 : Create a web page that loads list of the musics by title, artist name, etc.  
+
+Exercise 6
+6-1 : Write methods with AJAX to find next/previous element child/sibling and a method to return a list of child elements.
+
+6-2 : Write a function for books.xml to find all books, title, authors and year to print.  
+Write a function for cd_catalog.xml to find all CDs released since 1990, and print title, artist and year for each of them with table.  
+
+6-3 : Write a function for books.xml that create and add three books and print each title, authors and year with table.  
+Write a function for cd_catalog.xml that find all CDs released before 1995 and for each of them lower the price by 10%, and print title, artist, print and year with table.
