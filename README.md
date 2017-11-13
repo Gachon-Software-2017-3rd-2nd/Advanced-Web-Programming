@@ -32,7 +32,21 @@ Write a function for cd_catalog.xml to find all CDs released since 1990, and pri
 Write a function for cd_catalog.xml that find all CDs released before 1995 and for each of them lower the price by 10%, and print title, artist, print and year with table.
 
 Exercise 9  
-9-1 : Write registration form with JSP servlet that do the POST request to itself to check validation.  
-9-2 : Write a browser based web page that show the red text with yellow background in chrome, white text with navy background in others.  
-9-3 : Write the front-end search engine site that search the keyword depends on the search engine that user selected.  
-9-4 : Write registration form with JSP servlet that store the information of user with Cookies in the browser.  
+9-1 : Write registration form with JSP servlet that do the POST request to itself to check validation.
+
+9-2 : Write a browser based web page that show the red text with yellow background in chrome, white text with navy background in others.
+
+9-3 : Write the front-end search engine site that search the keyword depends on the search engine that user selected.
+
+9-4 : Write registration form with JSP servlet that store the information of user with Cookies in the browser.
+
+Exercise 10  
+10-1 : Write a program that submit the information of user and print them with another html file.
+
+10-2 : Write a program that print all request headers of client and change text and background colors.
+
+10-3 : Write A program that counting and writing about access count, previous date and previous host while the index.jsp access to the access.jsp.
+
+
+
+
