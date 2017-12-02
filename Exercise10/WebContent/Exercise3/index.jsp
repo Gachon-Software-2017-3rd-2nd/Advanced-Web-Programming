@@ -15,6 +15,7 @@ Include with file >> <br><%@ include file="access.jsp" %>
  previousDate = new Date();
  previousHost = request.getRemoteHost();
 %>
+
 <br>
 Include with jsp:include >> <br>
 <jsp:include page="access.jsp"></jsp:include>

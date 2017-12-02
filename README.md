@@ -45,8 +45,14 @@ Exercise 10
 
 10-2 : Write a program that print all request headers of client and change text and background colors.
 
-10-3 : Write A program that counting and writing about access count, previous date and previous host while the index.jsp access to the access.jsp.
+10-3 : Write a program that counting and writing about access count, previous date and previous host while the index.jsp access to the access.jsp.
 
+10-4 : Write a program that show the table for headers informations when user open the page at second time.
 
+10-5 : Write a program with **servlet** that get the name of nation and response the initial of nation name.
+
+10-6 : Write a program that user can enter their name, e-mail address and phone number and check validation for each data.
+
+10-7 : Write a program that show the random double and integer numbers
 
 
